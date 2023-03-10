@@ -7,6 +7,7 @@ export default function MePage() {
   return (
     <Layout>
       <pre>{JSON.stringify(data, null, 2)}</pre>
+      {console.log(data)}
     </Layout>
   )
 }
