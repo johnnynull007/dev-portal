@@ -1,0 +1,12 @@
+.myKudosContainer {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.kudoCard {
+  width: 300px;
+  height: 220px;
+  background-color: #7B4454;
+}

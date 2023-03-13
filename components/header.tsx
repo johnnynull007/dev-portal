@@ -14,11 +14,11 @@ export default function Header() {
       <noscript>
         <style>{`.nojs-show { opacity: 1; top: 0; }`}</style>
       </noscript>
+
       <div className={styles.signedInStatus}>
+        <p>PLUM</p>
         <p
-          className={`nojs-show ${
-            !session && loading ? styles.loading : styles.loaded
-          }`}
+          className={`nojs-show ${!session && loading ? styles.loading : styles.loaded}`}
         >
           {!session && (
             <>
@@ -31,7 +31,7 @@ export default function Header() {
                 onClick={(e) => {
                   e.preventDefault()
                   signIn()
-                }}
+                } }
               >
                 Sign in
               </a>
@@ -39,54 +39,50 @@ export default function Header() {
           )}
           {session?.user && (
             <>
+              <div>
               {session.user.image && (
                 <span
                   style={{ backgroundImage: `url('${session.user.image}')` }}
-                  className={styles.avatar}
-                />
+                  className={styles.avatar} />
               )}
-              <span className={styles.signedInText}>
-                <small>Signed in as</small>
-                <br />
                 <strong>{session.user.email ?? session.user.name}</strong>
-              </span>
+              </div>
+              <div>
               <a
                 href={`/api/auth/signout`}
                 className={styles.button}
                 onClick={(e) => {
                   e.preventDefault()
                   signOut()
-                }}
+                } }
               >
                 Sign out
               </a>
+              </div>
             </>
           )}
         </p>
       </div>
       <nav>
         <ul className={styles.navItems}>
-          <li className={styles.navItem}>
-            <Link href="/">Home</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="/client">Client</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="/server">Server</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="/protected">Protected</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="/api-example">API</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="/admin">Admin</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="/me">Me</Link>
-          </li>
+          {/* <li className={styles.navItem}>
+      <Link href="/">Home</Link>
+    </li> */}
+          {/* <li className={styles.navItem}>
+      <Link href="/client">Client</Link>
+    </li>
+    <li className={styles.navItem}>
+      <Link href="/server">Server</Link>
+    </li> */}
+          {/*  <li className={styles.navItem}>
+       <Link href="/api-example">API</Link>
+     </li>
+     <li className={styles.navItem}>
+       <Link href="/admin">Admin</Link>
+     </li> */}
+          {/*  <li className={styles.navItem}>
+       <Link href="/me">Me</Link>
+     </li> */}
         </ul>
       </nav>
     </header>

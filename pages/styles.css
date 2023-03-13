@@ -1,12 +1,11 @@
 body {
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Quicksand', sans-serif;
   padding: 0 1rem 1rem 1rem;
-  max-width: 680px;
+  max-width: 100vw;
+  max-height: 100vh;
   margin: 0 auto;
-  background: #fff;
-  color: #333;
+  background: #2E2B33;
+  color: #EBEBEB;
 }
 
 li,
