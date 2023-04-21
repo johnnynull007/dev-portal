@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { signIn, signOut, useSession } from "next-auth/react"
-import styles from "./myActivities.module.css"
+import styles from "./sentKudos.module.css"
 import { IUser } from "../interface/User";
 import { IKudo } from "../interface/Kudo";
 
@@ -8,7 +8,7 @@ interface IProps {
   kudos: IKudo[];
 };
 
-const myActivities = (props: IProps) => {
+const sentKudos = (props: IProps) => {
   /* const { data: session, status } = useSession()
   const loading = status === "loading" */
 
@@ -35,4 +35,4 @@ const myActivities = (props: IProps) => {
   )
 }
 
-export default myActivities;
+export default sentKudos;
