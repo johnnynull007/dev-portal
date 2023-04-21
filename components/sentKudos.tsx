@@ -14,8 +14,8 @@ const sentKudos = (props: IProps) => {
 
   return (
     <>
-    <div className={styles.myKudosContainer}>
-      <p>My activites</p>
+    <div className={styles.kudosButtonsContainer}>
+     <p>My activites</p>
       <button
         className={styles.giveKudosButton}
         onClick={(e) => {e.preventDefault()}} >
@@ -23,14 +23,16 @@ const sentKudos = (props: IProps) => {
       </button>
     </div>
 
-    {props.kudos.map(kudo => {
+    <div className={styles.myKudosContainer}>
+    {props.kudos.map((kudo, index) => {
       return (
-        <div className={styles.kudoCard}>
+        <div key={index} className={styles.kudoCard}>
           <p>To: {kudo.to}</p>
           <p>My message: {kudo.message}</p>
         </div>
       )
     })}
+     </div>
     </>
   )
 }

@@ -17,7 +17,7 @@ export default function Header() {
 
       <div className={styles.signedInStatus}>
         <p>PLUM</p>
-        <p
+        <span
           className={`nojs-show ${!session && loading ? styles.loading : styles.loaded}`}
         >
           {!session && (
@@ -61,7 +61,7 @@ export default function Header() {
               </div>
             </>
           )}
-        </p>
+        </span>
       </div>
       <nav>
         <ul className={styles.navItems}>
