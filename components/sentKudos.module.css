@@ -2,7 +2,14 @@
   width: 100%;
   height: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+}
+
+.kudosButtonsContainer {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .giveKudosButton {
@@ -16,4 +23,5 @@
   width: 300px;
   height: 220px;
   background-color: #372460;
+  margin-left: 10px;
 }

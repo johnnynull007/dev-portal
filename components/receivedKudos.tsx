@@ -15,17 +15,16 @@ const receivedKudos = (props: IProps) => {
   return (
     <>
     <div className={styles.myKudosContainer}>
-      <p>My kudos</p>
-    </div>
 
-    {props.kudos.map(kudo => {
+    {props.kudos.map((kudo, index) => {
       return (
-        <div className={styles.kudoCard}>
+        <div key={index} className={styles.kudoCard}>
           <p>Message: {kudo.message}</p>
           <p>From: {kudo.from}</p>
         </div>
       )
     })}
+    </div>
     </>
   )
 }
