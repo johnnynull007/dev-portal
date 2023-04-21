@@ -1,8 +1,8 @@
 import { useSession } from "next-auth/react"
 import Layout from "../components/layout"
 import Parse from "parse"
-import MyKudos from "../components/myKudos"
-import MyActivities from "../components/myActivities"
+import RecievedKudos from "../components/receivedKudos"
+import SentKudos from "../components/receivedKudos"
 import { useState } from "react"
 
 export default function MePage() {
@@ -35,9 +35,9 @@ export default function MePage() {
        <p>Welcome {JSON.stringify(data?.user?.name)}</p>
         <div style={{width: "100%", height: "0.5px", background: "#EBEBEB", margin: "20px 0 10px 0"}}></div>
         {console.log(JSON.stringify(data, null, 2))}
-        <MyKudos kudos={kudos} />
+        <RecievedKudos kudos={kudos} />
         <div style={{width: "100%", height: "0.5px", background: "#EBEBEB", margin: "20px 0 10px 0"}}></div>
-        <MyActivities kudos={kudos} />
+        <SentKudos kudos={kudos} />
         <div style={{width: "100%", height: "0.5px", background: "#EBEBEB", margin: "20px 0 10px 0"}}></div>
       </>
     </Layout>
