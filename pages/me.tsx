@@ -2,7 +2,11 @@ import { useSession } from "next-auth/react"
 import Layout from "../components/layout"
 import Parse from "parse"
 import RecievedKudos from "../components/receivedKudos"
+<<<<<<< HEAD
 import SentKudos from "../components/sentKudos"
+=======
+import SentKudos from "../components/receivedKudos"
+>>>>>>> 28e64c4 (Change the names)
 import { useState } from "react"
 
 export default function MePage() {
