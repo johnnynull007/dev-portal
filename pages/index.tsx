@@ -1,7 +1,10 @@
+import { useSession } from "next-auth/react"
 import Head from "next/head"
 import Layout from "../components/layout"
+import MePage from "./me"
 
 export default function IndexPage() {
+  const { data } = useSession()
   return (
     <Layout>
       <Head>
@@ -15,6 +18,8 @@ export default function IndexPage() {
         This is an example site to demonstrate how to use{" "}
         <a href="https://next-auth.js.org">NextAuth.js</a> for authentication.
       </p>
+      {data && <MePage />}
     </Layout>
+
   )
 }

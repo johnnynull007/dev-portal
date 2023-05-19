@@ -12,10 +12,8 @@ const PARSE_HOST_URL = 'https://parseapi.back4app.com/';
 const PARSE_JAVASCRIPT_KEY = 'bU0tRiCpluJfrAUd7xssaQrGyLZtXGPg9tIDOnYU';
 Parse.initialize(PARSE_APPLICATION_ID, PARSE_JAVASCRIPT_KEY);
 Parse.serverURL = PARSE_HOST_URL;
-console.log("APP IS RUN")
 const checkLoggedIn = async() => {
   getSession().then(async (response) => {
-    console.log(response)
     if(response) {
       try {
         const query = new Parse.Query('users');
@@ -23,8 +21,6 @@ const checkLoggedIn = async() => {
         query.equalTo('alias', response.user?.name);
         // run the query
         const exist = await query.first();
-
-        console.log(exist)
         if(!exist) {
           const Person = new Parse.Object('users');
           // define the attributes you want for your Object
