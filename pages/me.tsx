@@ -84,7 +84,7 @@ export default function MePage() {
         <div style={{width: "100%", height: "0.5px", background: "#EBEBEB", margin: "20px 0 10px 0"}}></div>
         <RecievedKudos kudos={recievedKudous} />
         <div style={{width: "100%", height: "0.5px", background: "#EBEBEB", margin: "20px 0 10px 0"}}></div>
-        <SentKudos kudos={sentKudos} />
+        <SentKudos kudos={sentKudos}/>
         <div style={{width: "100%", height: "0.5px", background: "#EBEBEB", margin: "20px 0 10px 0"}}></div>
       </>
   )
