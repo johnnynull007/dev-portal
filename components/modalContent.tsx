@@ -10,8 +10,8 @@ export default function ModalContent() {
         console.log('here');
         const kudo = new Parse.Object('kudos');
         kudo.set('from', username);
-        kudo.set('to', 'kanir-l');
-        kudo.set('message', 'Can you see this?');
+        kudo.set('to', 'johnnynull007');
+        kudo.set('message', 'What about this');
         kudo.set('email', 'kr@kanir.se')
         console.log(kudo);
         try {

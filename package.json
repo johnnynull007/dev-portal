@@ -18,8 +18,9 @@
     "Lluis Agusti <hi@llu.lu>"
   ],
   "dependencies": {
+    "@parse/react-ssr": "^0.0.1-alpha.18",
     "next": "latest",
-    "next-auth": "latest",
+    "next-auth": "^4.22.1",
     "nodemailer": "^6",
     "parse": "^4.0.1",
     "react": "^18.2.0",
