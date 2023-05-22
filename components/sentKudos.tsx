@@ -13,9 +13,6 @@ interface IProps {
 };
 
 const sentKudos = (props: IProps) => {
-  /* const { data: session, status } = useSession()
-  const loading = status === "loading" */
-
   const [open, setOpen] = useState(false);
 
   const onOpenModal = () => setOpen(true);
@@ -24,7 +21,7 @@ const sentKudos = (props: IProps) => {
   return (
     <>
     <div className={styles.kudosButtonsContainer}>
-     <p>My activites</p>
+      <p>All sent Kudos</p>
       <button
         className={styles.giveKudosButton}
         onClick={() => onOpenModal()} >

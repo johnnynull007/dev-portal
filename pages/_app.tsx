@@ -30,7 +30,7 @@ const checkLoggedIn = async() => {
           await Person.save();
           alert('Person saved!');
         }
-       
+
       } catch (error) {
         console.log('Error saving new person: ', error);
       }

@@ -1,10 +1,8 @@
 export interface IKudo {
-    objectId: string,
-    createdAt: string,
-    updatedAt: string,
-    ACL: string,
-    from: string,
-    to: string,
-    message: string,
+    createdAt: Object,
     email: string,
+    from: string,
+    message: string,
+    to: string,
+    updatedAt: Object,
 };

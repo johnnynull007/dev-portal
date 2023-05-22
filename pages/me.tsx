@@ -1,45 +1,76 @@
-import { useSession } from "next-auth/react"
+import { useSession, getSession } from "next-auth/react"
+import { GetServerSideProps, NextPage } from "next"
+import { useEffect, useState } from 'react';
 import Layout from "../components/layout"
 import Parse from "parse"
+import { encodeParseQuery } from "@parse/react-ssr";
 import RecievedKudos from "../components/receivedKudos"
 import SentKudos from "../components/sentKudos"
-import { useState } from "react"
+import { IKudo } from "../interface/Kudo";
+import { IUser } from "../interface/User";
 
-export default function MePage() {
-  const { data } = useSession()
-  const [kudos, setKudos] = useState([{
-    objectId: "ABC",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    ACL: "ACL",
-    from: "johnny",
-    to: "kani",
-    message: "good job",
-    email: "kr@kanir.se"
-  }]) //Mock Data
+interface Props {
+  user: IUser,
+}
 
-  const username:string = data?.user?.name ? data?.user.name : "";
+const me: NextPage<Props> = ( { user } ) => {
+  const [recievedKudos, setRecievedKudos] = useState([{
+    createdAt: {},
+    email: "",
+    from: "",
+    message: "",
+    to: "",
+    updatedAt: {},
+  }]);
 
-  async function fetchKudos() {
-    const query = new Parse.Query('kudos');
-    const kudos = await query.first();
-    const userKudos = kudos?.get('email')
-    /* setKudos(userKudos); */
-  };
+  const [sentKudos, setSentKudos] = useState([{
+    createdAt: {},
+    email: "",
+    from: "",
+    message: "",
+    to: "",
+    updatedAt: {},
+  }]);
 
-  fetchKudos();
+  useEffect(()=>{
+    const kudos =  new Parse.Query('kudos');
+    if (user) {
+      kudos.contains('to', user?.name).find().then(data => setRecievedKudos(data.map(a => a.attributes)));
+    };
+  }, [])
+
+  useEffect(()=>{
+    const kudos =  new Parse.Query('kudos');
+    if (user) {
+       kudos.contains('from', user?.name).find().then(data => setSentKudos(data.map(a => a.attributes)));
+    }
+  }, [])
 
   return (
     <Layout>
-      <>
-       <p>Welcome {JSON.stringify(data?.user?.name)}</p>
-        <div style={{width: "100%", height: "0.5px", background: "#EBEBEB", margin: "20px 0 10px 0"}}></div>
-        {console.log(JSON.stringify(data, null, 2))}
-        <RecievedKudos kudos={kudos} />
-        <div style={{width: "100%", height: "0.5px", background: "#EBEBEB", margin: "20px 0 10px 0"}}></div>
-        <SentKudos kudos={kudos} />
-        <div style={{width: "100%", height: "0.5px", background: "#EBEBEB", margin: "20px 0 10px 0"}}></div>
-      </>
+      {user &&
+        <>
+          <p>Welcome {user?.name}</p>
+          <div style={{width: "100%", height: "0.5px", background: "#EBEBEB", margin: "20px 0 10px 0"}}></div>
+          <RecievedKudos kudos={recievedKudos} />
+          <div style={{width: "100%", height: "0.5px", background: "#EBEBEB", margin: "20px 0 10px 0"}}></div>
+          <SentKudos kudos={sentKudos} />
+          <div style={{width: "100%", height: "0.5px", background: "#EBEBEB", margin: "20px 0 10px 0"}}></div>
+        </>
+      }
+      <div></div>
     </Layout>
   )
 }
+
+export default me;
+
+export const getServerSideProps: GetServerSideProps = async context => {
+  const session = await getSession(context)
+
+  return {
+    props: {
+        user: session?.user,
+    }
+  };
+};
