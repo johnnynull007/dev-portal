@@ -6,6 +6,8 @@ interface IProps {
 };
 
 const receivedKudos = (props: IProps) => {
+  const colours = ["#7B4454", "#4E3D46", "#3C354B", "#42345F", "#805A65", "#5F5772"];
+  const getBGColour = () => colours[Math.floor(Math.random() * colours.length)];
 
   return (
     <>
@@ -13,8 +15,11 @@ const receivedKudos = (props: IProps) => {
       <div className={styles.myKudosContainer}>
         {props.kudos?.map((kudo, index) => {
           return (
-            <div key={index} className={styles.kudoCard}>
-              <p>Message: {kudo.message}</p>
+            <div key={index} className={styles.kudoCard} style={{backgroundColor: getBGColour()}}>
+              <div>
+                <p>Message:</p>
+                <p className={styles.message}>"{kudo.message}"</p>
+              </div>
               <p>From: {kudo.from}</p>
             </div>
           )

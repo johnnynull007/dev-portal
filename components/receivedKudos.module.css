@@ -2,11 +2,21 @@
   width: 100%;
   height: auto;
   display: flex;
-  justify-content: space-between;
+  overflow-y: scroll;
+  scrollbar-width: thin;
 }
 
 .kudoCard {
-  width: 300px;
+  min-width: 300px;
   height: 220px;
-  background-color: #7B4454;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.message {
+  font-style: italic;
+  padding-left: 8px;
 }

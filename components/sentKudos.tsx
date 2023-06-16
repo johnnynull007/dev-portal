@@ -18,6 +18,9 @@ const sentKudos = (props: IProps) => {
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
 
+  const colours = ["#7B4454", "#4E3D46", "#3C354B", "#42345F", "#805A65", "#5F5772"];
+  const getBGColour = () => colours[Math.floor(Math.random() * colours.length)];
+
   return (
     <>
     <div className={styles.kudosButtonsContainer}>
@@ -32,9 +35,10 @@ const sentKudos = (props: IProps) => {
     <div className={styles.myKudosContainer}>
     {props.kudos.map((kudo, index) => {
       return (
-        <div key={index} className={styles.kudoCard}>
+        <div key={index} className={styles.kudoCard} style={{backgroundColor: getBGColour()}}>
           <p>To: {kudo.to}</p>
-          <p>My message: {kudo.message}</p>
+          <p>Message:</p>
+          <p className={styles.message}>"{kudo.message}"</p>
         </div>
       )
     })}
