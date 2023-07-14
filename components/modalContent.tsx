@@ -8,22 +8,22 @@ export default function ModalContent({ userList }) {
     const { data } = useSession();
     const [reciever, setReciever] = useState("");
     const [message, setMessage] = useState("");
+    const [messageIsSent, setMessageIsSent] = useState(false);
     const username:string = data?.user?.name ? data?.user.name : "";
 
     const sendKudosToReciever = async() => {
-        console.log('here');
         const kudo = new Parse.Object('kudos');
         kudo.set('from', username);
         kudo.set('to', reciever);
         kudo.set('message', message);
         kudo.set('email', 'kr@kanir.se')
-        console.log(kudo);
         try {
             const result = await kudo.save();
             // Access the Parse Object attributes using the .GET method
             console.log('ParseObject created', result);
             setReciever("");
             setMessage("");
+            setMessageIsSent(true)
         } catch (error) {
             console.error('Error while creating ParseObject: ', error);
         }
@@ -38,6 +38,7 @@ export default function ModalContent({ userList }) {
             <p>Message</p>
             <textarea  onChange={(e) => setMessage(e.target.value)} />
             <button onClick={() => sendKudosToReciever()}>Send</button>
+           {messageIsSent && <p>Message sent</p>}
         </div>
     </div>
   )
