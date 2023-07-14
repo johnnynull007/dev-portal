@@ -1,5 +1,5 @@
 import Parse from "parse"
-import { signIn, signOut, useSession } from "next-auth/react"
+import { getSession, signIn, signOut, useSession } from "next-auth/react"
 import styles from "./sentKudos.module.css"
 import { IUser } from "../interface/User";
 import { IKudo } from "../interface/Kudo";
@@ -14,7 +14,8 @@ interface IProps {
 
 const sentKudos = (props: IProps) => {
   const [open, setOpen] = useState(false);
-
+  const session = getSession();
+  console.log(props);
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
 
@@ -54,7 +55,7 @@ const sentKudos = (props: IProps) => {
     })}
      </div>
      <Modal open={open} onClose={onCloseModal} center>
-        <ModalContent />
+        <ModalContent userList={props.usersList}/>
      </Modal>
     </>
   )

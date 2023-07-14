@@ -12,6 +12,8 @@ import { IUser } from "../interface/User";
 
 
 const me: NextPage<Props> = ( { user } ) => {
+ 
+  //console.log(usersList)
   const [recievedKudos, setRecievedKudos] = useState([{
     createdAt: {},
     email: "",
@@ -30,6 +32,8 @@ const me: NextPage<Props> = ( { user } ) => {
     updatedAt: {},
   }]);
 
+  const [usersList, setUsersList] = useState([]);
+
   useEffect(()=>{
     const kudos =  new Parse.Query('kudos');
     if (user) {
@@ -43,6 +47,17 @@ const me: NextPage<Props> = ( { user } ) => {
        kudos.contains('from', user?.name).find().then(data => setSentKudos(data.map(a => a.attributes)));
     }
   }, [])
+
+  useEffect(()=>{
+    const query = new Parse.Query('users');
+    query.findAll().then((results) => {
+      console.log(results.map(result => result.attributes));
+      setUsersList(results.map(result => result.attributes));
+    }).catch((error) =>  {
+     console.log(error);
+     return [];
+    });
+  },[])
 
   return (
     <Layout>
@@ -63,7 +78,7 @@ const me: NextPage<Props> = ( { user } ) => {
           <div style={{width: "100%", height: "0.5px", background: "#EBEBEB", margin: "20px 0 10px 0"}}></div>
           <RecievedKudos kudos={recievedKudos} />
           <div style={{width: "100%", height: "0.5px", background: "#EBEBEB", margin: "20px 0 10px 0"}}></div>
-          <SentKudos kudos={sentKudos} />
+          <SentKudos kudos={sentKudos} usersList={usersList}/>
           <div style={{width: "100%", height: "0.5px", background: "#EBEBEB", margin: "20px 0 10px 0"}}></div>
         </>
       }
