@@ -1,4 +1,4 @@
-import Link from "next/link"
+import Parse from "parse"
 import { signIn, signOut, useSession } from "next-auth/react"
 import styles from "./sentKudos.module.css"
 import { IUser } from "../interface/User";
@@ -20,6 +20,16 @@ const sentKudos = (props: IProps) => {
 
   const colours = ["#7B4454", "#4E3D46", "#3C354B", "#42345F", "#805A65", "#5F5772"];
   const getBGColour = () => colours[Math.floor(Math.random() * colours.length)];
+  const query = new Parse.Query('users');
+  const userlist = () => {
+    query.findAll().then((results) => {
+      console.log(results.map(result => result.attributes));
+      return results.map(result => result.attributes);
+    }).catch((error) =>  {
+     console.log(error);
+     return [];
+    });
+  };
 
   return (
     <>
