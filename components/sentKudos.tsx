@@ -14,23 +14,12 @@ interface IProps {
 
 const sentKudos = (props: IProps) => {
   const [open, setOpen] = useState(false);
-  const session = getSession();
   console.log(props);
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
 
   const colours = ["#7B4454", "#4E3D46", "#3C354B", "#42345F", "#805A65", "#5F5772"];
   const getBGColour = () => colours[Math.floor(Math.random() * colours.length)];
-  const query = new Parse.Query('users');
-  const userlist = () => {
-    query.findAll().then((results) => {
-      console.log(results.map(result => result.attributes));
-      return results.map(result => result.attributes);
-    }).catch((error) =>  {
-     console.log(error);
-     return [];
-    });
-  };
 
   return (
     <>
