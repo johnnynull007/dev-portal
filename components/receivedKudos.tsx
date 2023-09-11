@@ -15,14 +15,17 @@ const receivedKudos = (props: IProps) => {
       <div className={styles.myKudosContainer}>
         {props.kudos?.map((kudo, index) => {
           return (
-            <div key={index} className={styles.kudoCard} style={{backgroundColor: getBGColour()}}>
-              <div>
-                <p>Message:</p>
-                <p className={styles.message}>"{kudo.message}"</p>
-              </div>
-              <p>From: {kudo.from}</p>
+          <>
+          <div key={index} className={styles.kudoCard}>
+            <div className={styles.kudoTop} style={{backgroundColor: getBGColour()}}>
+            <p className={styles.name}>To: {kudo.to}</p>
+            <div className={styles.kudo}>
+              <p className={styles.message}>"{kudo.message}"</p>
             </div>
-          )
+           </div>
+          </div>
+        </>
+      )
         })}
       </div>
     </>

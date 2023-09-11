@@ -7,16 +7,35 @@
 }
 
 .kudoCard {
-  min-width: 300px;
-  height: 220px;
-  margin: 10px;
-  padding: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+}
+
+.kudoTop {
+  width: 300px;
+  height: 280px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 3px;
+  border-top-left-radius: 36px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 36px;
+}
+
+.kudo {
+  width: 260px;
+  height: 200px;
+  padding: 10px;
+  background: #ffffff;
+  border-radius: 3px;
+}
+
+.name {
+  margin: 12px;
 }
 
 .message {
   font-style: italic;
-  padding-left: 8px;
+  color: #000000;
 }
