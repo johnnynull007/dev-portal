@@ -6,6 +6,7 @@ interface IProps {
 };
 
 const receivedKudos = (props: IProps) => {
+  const arrangedKudos = props.kudos.reverse();
   const colours = ["#7B4454", "#4E3D46", "#3C354B", "#42345F", "#805A65", "#5F5772"];
   const getBGColour = () => colours[Math.floor(Math.random() * colours.length)];
 
@@ -13,7 +14,7 @@ const receivedKudos = (props: IProps) => {
     <>
      <p>Kudos I've received</p>
       <div className={styles.myKudosContainer}>
-        {props.kudos?.map((kudo, index) => {
+        {arrangedKudos?.map((kudo, index) => {
           return (
           <>
           <div key={index} className={styles.kudoCard}>
