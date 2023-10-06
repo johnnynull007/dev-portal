@@ -13,8 +13,8 @@ interface IProps {
 };
 
 const sentKudos = (props: IProps) => {
+  const arrangedKudos = props.kudos.reverse();
   const [open, setOpen] = useState(false);
-  console.log(props);
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
 
@@ -33,7 +33,7 @@ const sentKudos = (props: IProps) => {
     </div>
 
     <div className={styles.myKudosContainer}>
-    {props.kudos.map((kudo, index) => {
+    {arrangedKudos.map((kudo, index) => {
       return (
         <>
         <div key={index} className={styles.kudoCard}>
