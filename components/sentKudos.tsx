@@ -48,7 +48,7 @@ const sentKudos = (props: IProps) => {
       )
     })}
      </div>
-     <Modal open={open} onClose={onCloseModal} center>
+     <Modal open={open} onClose={onCloseModal} center showCloseIcon={false}>
         <ModalContent userList={props.usersList}/>
      </Modal>
     </>
