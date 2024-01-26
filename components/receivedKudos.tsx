@@ -18,7 +18,7 @@ const receivedKudos = (props: IProps) => {
           <>
           <div key={index} className={styles.kudoCard}>
             <div className={styles.kudoTop} style={{backgroundColor: getBGColour()}}>
-            <p className={styles.name}>To: {kudo.to}</p>
+            <p className={styles.name}>From: {kudo.from}</p>
             <div className={styles.kudo}>
               <p className={styles.message}>"{kudo.message}"</p>
             </div>
